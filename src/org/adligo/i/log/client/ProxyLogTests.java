@@ -2,7 +2,10 @@ package org.adligo.i.log.client;
 
 import java.util.HashMap;
 
+import org.adligo.i.util.client.CollectionFactory;
 import org.adligo.i.util.client.I_Map;
+import org.adligo.j2se.util.J2SECollectionFactory;
+import org.adligo.j2se.util.J2SEPlatform;
 import org.adligo.j2se.util.MapWrapper;
 
 import junit.framework.TestCase;
@@ -11,6 +14,7 @@ public class ProxyLogTests extends TestCase {
 	Exception x = new Exception("PEx");
 	LogTestDelegate example = new LogTestDelegate();
 	LogTestDelegate delegate = new LogTestDelegate();
+	LogTestDelegate delegate2;
 	
 	public void testLogProxyNPEs() {
 		ProxyLog log = new ProxyLog(this.getClass());
@@ -28,11 +32,19 @@ public class ProxyLogTests extends TestCase {
 		log.fatal("foo", x);
 	}
 	
-	public void testSingleProxy() {
-		
-		
+	public void testProxy() throws Exception {
 		ProxyLog log = new ProxyLog(this.getClass());
 		log.addDelegate(delegate);
+		//single delegate asserts
+		runAsserts(log);
+		delegate2 = new LogTestDelegate();
+		
+		J2SEPlatform.init();
+		log.addDelegate(delegate2);
+		runAsserts(log);
+	}
+
+	private void runAsserts(ProxyLog log) {
 		log.setLevel(I_LogDelegate.LOG_LEVEL_FATAL);
 		assertFatal(log);
 		log.setLevel(I_LogDelegate.LOG_LEVEL_ERROR);
@@ -99,7 +111,6 @@ public class ProxyLogTests extends TestCase {
 		assertDebug(log);
 		setTestLog(log, map, "TRACE");
 		assertTrace(log);
-		
 	}
 	
 	
@@ -337,15 +348,27 @@ public class ProxyLogTests extends TestCase {
 	
 	public void assertOutput() {
 		assertEquals("should match",example, delegate);
+		delegate.log(-10, null, null);
+		if (delegate2 != null) {
+			assertEquals("should match",example, delegate2);
+			//System.out.println("assert 2");
+		}
 	}
 	
 	public void setupNextBlock() {
 		example.log(-10, null, null);
 		delegate.log(-10, null, null);
+		if (delegate2 != null) {
+			delegate2.log(-10, null, null);
+		}
 	}
 	
 	public void setupNextMessage(int level, String p, Throwable t) {
 		example.log(level, p, t);
+		delegate.log(-10, null, null);
+		if (delegate2 != null) {
+			delegate2.log(-10, null, null);
+		}
 	}
 	
 	public void setTestLog(ProxyLog log, I_Map map, String level) {
