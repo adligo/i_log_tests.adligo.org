@@ -10,6 +10,31 @@ import org.adligo.j2se.util.MapWrapper;
 public class SimpleLogTests extends TestCase implements I_LogOutput {
 	private String currentLog = "";
 	private String newMessage = "";
+	private String errTrace = " <java.lang.Exception: Ex>\n" +
+	 	"\t at org.adligo.i.log.client.SimpleLogTests.setUp(SimpleLogTests.java:32)\n"+
+		"\t at junit.framework.TestCase.runBare(TestCase.java:128)\n"+
+		"\t at junit.framework.TestResult$1.protect(TestResult.java:106)\n"+
+		"\t at junit.framework.TestResult.runProtected(TestResult.java:124)\n"+
+		"\t at junit.framework.TestResult.run(TestResult.java:109)\n"+
+		"\t at junit.framework.TestCase.run(TestCase.java:120)\n"+
+		"\t at junit.framework.TestSuite.runTest(TestSuite.java:230)\n"+
+		"\t at junit.framework.TestSuite.run(TestSuite.java:225)\n"+
+		"\t at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)\n"+
+		"\t at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)\n"+
+		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)\n"+
+		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)\n"+
+		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)\n"+
+		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)\n";
+	private Exception x = null;
+	
+	public void setUp() {
+		try {
+			 Exception t = new Exception("Ex");
+			 throw t;
+		} catch (Exception y) {
+			x = y;
+		}
+	}
 	
 	@Override
 	public void write(String p) {
@@ -91,43 +116,57 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		SimpleLog.setOut(new SystemErrOutput());
 	}
 
-	private void setTestLog(SimpleLog log, I_Map map, String level) {
+	public void setTestLog(SimpleLog log, I_Map map, String level) {
 		map.put("TestLog", level);
 		log.setLogLevel(map);
 	}
 	
-	private void setDefaultLog(SimpleLog log, I_Map map, String level) {
+	public void setDefaultLog(SimpleLog log, I_Map map, String level) {
 		map.put("defaultlog", level);
 		log.setLogLevel(map);
 	}
 
-	private void assertFatal(SimpleLog log) {
+	public void assertFatal(SimpleLog log) {
 		setupNextBlock();
 		log.trace("hey");
+		assertOutputNotCalled();
+		log.trace("hey", x);
 		assertOutputNotCalled();
 		
 		setupNextBlock();
 		log.debug("hey");
 		assertOutputNotCalled();
+		log.debug("hey", x);
+		assertOutputNotCalled();
 		
 		setupNextBlock();
 		log.info("hey");
+		assertOutputNotCalled();
+		log.info("hey", x);
 		assertOutputNotCalled();
 		
 		setupNextBlock();
 		log.warn("hey");
 		assertOutputNotCalled();
+		log.warn("hey", x);
+		assertOutputNotCalled();
 		
 		setupNextBlock();
 		log.error("hey");
 		assertOutputNotCalled();
+		log.error("hey", x);
+		assertOutputNotCalled();
 		
+		setupNextMessage("[FATAL] TestLog - hey" + errTrace);
+		log.fatal("hey", x);
+		assertOutputCalled();
 		setupNextMessage("[FATAL] TestLog - hey");
 		log.fatal("hey");
 		assertOutputCalled();
+		
 	}
 
-	private void assertError(SimpleLog log) {
+	public void assertError(SimpleLog log) {
 		
 		setupNextBlock();
 		log.trace("hey");
@@ -148,13 +187,19 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		setupNextMessage("[ERROR] TestLog - hey");
 		log.error("hey");
 		assertOutputCalled();
+		setupNextMessage("[ERROR] TestLog - hey" + errTrace);
+		log.error("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[FATAL] TestLog - hey");
 		log.fatal("hey");
 		assertOutputCalled();
+		setupNextMessage("[FATAL] TestLog - hey" + errTrace);
+		log.fatal("hey", x);
+		assertOutputCalled();
 	}
 	
-	private void assertWarn(SimpleLog log) {
+	public void assertWarn(SimpleLog log) {
 		setupNextBlock();
 		log.trace("hey");
 		assertOutputNotCalled();
@@ -170,17 +215,26 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		setupNextMessage("[WARN] TestLog - hey");
 		log.warn("hey");
 		assertOutputCalled();
+		setupNextMessage("[WARN] TestLog - hey" + errTrace);
+		log.warn("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[ERROR] TestLog - hey");
 		log.error("hey");
+		assertOutputCalled();
+		setupNextMessage("[ERROR] TestLog - hey" + errTrace);
+		log.error("hey", x);
 		assertOutputCalled();
 		
 		setupNextMessage("[FATAL] TestLog - hey");
 		log.fatal("hey");
 		assertOutputCalled();
+		setupNextMessage("[FATAL] TestLog - hey" + errTrace);
+		log.fatal("hey", x);
+		assertOutputCalled();
 	}
 	
-	private void assertInfo(SimpleLog log) {
+	public void assertInfo(SimpleLog log) {
 		setupNextBlock();
 		log.trace("hey");
 		assertOutputNotCalled();
@@ -192,21 +246,33 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		setupNextMessage("[INFO] TestLog - hey");
 		log.info("hey");
 		assertOutputCalled();
+		setupNextMessage("[INFO] TestLog - hey" + errTrace);
+		log.info("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[WARN] TestLog - hey");
 		log.warn("hey");
+		assertOutputCalled();
+		setupNextMessage("[WARN] TestLog - hey" + errTrace);
+		log.warn("hey", x);
 		assertOutputCalled();
 		
 		setupNextMessage("[ERROR] TestLog - hey");
 		log.error("hey");
 		assertOutputCalled();
+		setupNextMessage("[ERROR] TestLog - hey" + errTrace);
+		log.error("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[FATAL] TestLog - hey");
 		log.fatal("hey");
 		assertOutputCalled();
+		setupNextMessage("[FATAL] TestLog - hey" + errTrace);
+		log.fatal("hey", x);
+		assertOutputCalled();
 	}
 	
-	private void assertDebug(SimpleLog log) {
+	public void assertDebug(SimpleLog log) {
 		setupNextBlock();
 		log.trace("hey");
 		assertOutputNotCalled();
@@ -214,66 +280,110 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		setupNextMessage("[DEBUG] TestLog - hey");
 		log.debug("hey");
 		assertOutputCalled();
+		setupNextMessage("[DEBUG] TestLog - hey" + errTrace);
+		log.debug("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[INFO] TestLog - hey");
 		log.info("hey");
+		assertOutputCalled();
+		setupNextMessage("[INFO] TestLog - hey" + errTrace);
+		log.info("hey", x);
 		assertOutputCalled();
 		
 		setupNextMessage("[WARN] TestLog - hey");
 		log.warn("hey");
 		assertOutputCalled();
+		setupNextMessage("[WARN] TestLog - hey" + errTrace);
+		log.warn("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[ERROR] TestLog - hey");
 		log.error("hey");
+		assertOutputCalled();
+		setupNextMessage("[ERROR] TestLog - hey" + errTrace);
+		log.error("hey", x);
 		assertOutputCalled();
 		
 		setupNextMessage("[FATAL] TestLog - hey");
 		log.fatal("hey");
 		assertOutputCalled();
+		setupNextMessage("[FATAL] TestLog - hey" + errTrace);
+		log.fatal("hey", x);
+		assertOutputCalled();
 	}
 	
 	
-	private void assertTrace(SimpleLog log) {
+	public void assertTrace(SimpleLog log) {
 		setupNextMessage("[TRACE] TestLog - hey");
 		log.trace("hey");
 		assertOutputCalled();
+		setupNextMessage("[TRACE] TestLog - hey" + errTrace);
+		log.trace("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[DEBUG] TestLog - hey");
 		log.debug("hey");
+		assertOutputCalled();
+		setupNextMessage("[DEBUG] TestLog - hey" + errTrace);
+		log.debug("hey", x);
 		assertOutputCalled();
 		
 		setupNextMessage("[INFO] TestLog - hey");
 		log.info("hey");
 		assertOutputCalled();
+		setupNextMessage("[INFO] TestLog - hey" + errTrace);
+		log.info("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[WARN] TestLog - hey");
 		log.warn("hey");
+		assertOutputCalled();
+		setupNextMessage("[WARN] TestLog - hey" + errTrace);
+		log.warn("hey", x);
 		assertOutputCalled();
 		
 		setupNextMessage("[ERROR] TestLog - hey");
 		log.error("hey");
 		assertOutputCalled();
+		setupNextMessage("[ERROR] TestLog - hey" + errTrace);
+		log.error("hey", x);
+		assertOutputCalled();
 		
 		setupNextMessage("[FATAL] TestLog - hey");
 		log.fatal("hey");
 		assertOutputCalled();
+		setupNextMessage("[FATAL] TestLog - hey" + errTrace);
+		log.fatal("hey", x);
+		assertOutputCalled();
 	}
 	
-	private void assertOutputCalled() {
+	public void assertOutputCalled() {
 		assertTrue("Should have logged something", !"".equals(newMessage));
 	}
 
-	private void assertOutputNotCalled() {
+	public void assertOutputNotCalled() {
 		assertTrue("Should NOT have logged something", "".equals(newMessage));
 	}
 	
-	private void setupNextBlock() {
+	public void setupNextBlock() {
 		newMessage = "";
 		currentLog = "";
 	}
 	
-	private void setupNextMessage(String p) {
+	public void setupNextMessage(String p) {
 		newMessage = "";
 		currentLog = p;
 	}
+	
+
+	protected String getErrTrace() {
+		return errTrace;
+	}
+
+	protected void setErrTrace(String errTrace) {
+		this.errTrace = errTrace;
+	}
+
+
 }
