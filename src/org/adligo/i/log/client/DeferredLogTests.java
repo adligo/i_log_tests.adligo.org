@@ -13,8 +13,8 @@ public class DeferredLogTests extends TestCase implements I_LogOutput {
 	private int counter = 0;
 	DeferredLog log = new DeferredLog(DeferredLogTests.class);
 	Exception x = new Exception("DEx");
-	LogTestDelegate example = new LogTestDelegate();
-	LogTestDelegate delegate = new LogTestDelegate();
+	LogMockDelegate example = new LogMockDelegate();
+	LogMockDelegate delegate = new LogMockDelegate();
 	
 	public void setUp() throws Exception {
 		J2SEPlatform.init();

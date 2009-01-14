@@ -12,9 +12,9 @@ import junit.framework.TestCase;
 
 public class ProxyLogTests extends TestCase {
 	Exception x = new Exception("PEx");
-	LogTestDelegate example = new LogTestDelegate();
-	LogTestDelegate delegate = new LogTestDelegate();
-	LogTestDelegate delegate2;
+	LogMockDelegate example = new LogMockDelegate();
+	LogMockDelegate delegate = new LogMockDelegate();
+	LogMockDelegate delegate2;
 	
 	public void testLogProxyNPEs() {
 		ProxyLog log = new ProxyLog(this.getClass());
@@ -37,7 +37,7 @@ public class ProxyLogTests extends TestCase {
 		log.addDelegate(delegate);
 		//single delegate asserts
 		runAsserts(log);
-		delegate2 = new LogTestDelegate();
+		delegate2 = new LogMockDelegate();
 		
 		J2SEPlatform.init();
 		log.addDelegate(delegate2);

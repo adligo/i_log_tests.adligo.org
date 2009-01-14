@@ -1,6 +1,6 @@
 package org.adligo.i.log.client;
 
-public class LogTestDelegate implements I_LogDelegate {
+public class LogMockDelegate implements I_LogDelegate {
 
 	private int level = -10;
 	private Object message;
@@ -34,7 +34,7 @@ public class LogTestDelegate implements I_LogDelegate {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LogTestDelegate other = (LogTestDelegate) obj;
+		LogMockDelegate other = (LogMockDelegate) obj;
 		if (level != other.level)
 			return false;
 		if (message == null) {
