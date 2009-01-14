@@ -10,21 +10,7 @@ import org.adligo.j2se.util.MapWrapper;
 public class SimpleLogTests extends TestCase implements I_LogOutput {
 	private String currentLog = "";
 	private String newMessage = "";
-	private String errTrace = " <java.lang.Exception: Ex>\n" +
-	 	"\t at org.adligo.i.log.client.SimpleLogTests.setUp(SimpleLogTests.java:32)\n"+
-		"\t at junit.framework.TestCase.runBare(TestCase.java:128)\n"+
-		"\t at junit.framework.TestResult$1.protect(TestResult.java:106)\n"+
-		"\t at junit.framework.TestResult.runProtected(TestResult.java:124)\n"+
-		"\t at junit.framework.TestResult.run(TestResult.java:109)\n"+
-		"\t at junit.framework.TestCase.run(TestCase.java:120)\n"+
-		"\t at junit.framework.TestSuite.runTest(TestSuite.java:230)\n"+
-		"\t at junit.framework.TestSuite.run(TestSuite.java:225)\n"+
-		"\t at org.eclipse.jdt.internal.junit.runner.junit3.JUnit3TestReference.run(JUnit3TestReference.java:130)\n"+
-		"\t at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)\n"+
-		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:460)\n"+
-		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:673)\n"+
-		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:386)\n"+
-		"\t at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:196)\n";
+	private String errTrace;
 	private Exception x = null;
 	
 	public void setUp() {
@@ -34,6 +20,16 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		} catch (Exception y) {
 			x = y;
 		}
+		
+		StackTraceElement[] elements = x.getStackTrace();
+		StringBuffer sb = new StringBuffer();
+		sb.append(" <java.lang.Exception: Ex>\n");
+		for (int i = 0; i < elements.length; i++) {
+			sb.append("\t at ");
+			sb.append(elements[i].toString());
+			sb.append("\n");
+		}
+		errTrace = sb.toString();
 	}
 	
 	@Override
