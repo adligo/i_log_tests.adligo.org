@@ -19,6 +19,73 @@ public class DeferredLogTests extends TestCase implements I_LogOutput {
 	public void setUp() throws Exception {
 		J2SEPlatform.init();
 	}
+	public void testPrePostInitalizationState() throws Exception {
+		log = new DeferredLog(DeferredLogTests.class);
+		String message = "before the deferred log has " +
+				"a delegate all log level queries should return true!";
+		
+		assertTrue(message, log.isTraceEnabled());
+		assertTrue(message, log.isDebugEnabled());
+		assertTrue(message, log.isInfoEnabled());
+		assertTrue(message, log.isWarnEnabled());
+		assertTrue(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+		
+		SimpleLog slog = new SimpleLog("", new MapWrapper(new HashMap()));
+		log.addDelegate(slog);
+		
+		message = "after the deferred log has " +
+			"a delegate all log level queries should return " +
+			"the level!";
+		
+		log.setLevel(I_LogDelegate.LOG_LEVEL_TRACE);
+		assertTrue(message, log.isTraceEnabled());
+		assertTrue(message, log.isDebugEnabled());
+		assertTrue(message, log.isInfoEnabled());
+		assertTrue(message, log.isWarnEnabled());
+		assertTrue(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+		
+		log.setLevel(I_LogDelegate.LOG_LEVEL_DEBUG);
+		assertFalse(message, log.isTraceEnabled());
+		assertTrue(message, log.isDebugEnabled());
+		assertTrue(message, log.isInfoEnabled());
+		assertTrue(message, log.isWarnEnabled());
+		assertTrue(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+		
+		log.setLevel(I_LogDelegate.LOG_LEVEL_INFO);
+		assertFalse(message, log.isTraceEnabled());
+		assertFalse(message, log.isDebugEnabled());
+		assertTrue(message, log.isInfoEnabled());
+		assertTrue(message, log.isWarnEnabled());
+		assertTrue(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+		
+		log.setLevel(I_LogDelegate.LOG_LEVEL_WARN);
+		assertFalse(message, log.isTraceEnabled());
+		assertFalse(message, log.isDebugEnabled());
+		assertFalse(message, log.isInfoEnabled());
+		assertTrue(message, log.isWarnEnabled());
+		assertTrue(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+		
+		log.setLevel(I_LogDelegate.LOG_LEVEL_ERROR);
+		assertFalse(message, log.isTraceEnabled());
+		assertFalse(message, log.isDebugEnabled());
+		assertFalse(message, log.isInfoEnabled());
+		assertFalse(message, log.isWarnEnabled());
+		assertTrue(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+		
+		log.setLevel(I_LogDelegate.LOG_LEVEL_FATAL);
+		assertFalse(message, log.isTraceEnabled());
+		assertFalse(message, log.isDebugEnabled());
+		assertFalse(message, log.isInfoEnabled());
+		assertFalse(message, log.isWarnEnabled());
+		assertFalse(message, log.isErrorEnabled());
+		assertTrue(message, log.isFatalEnabled());
+	}
 	
 	public void testDeferrment() throws Exception {
 		DeferredLog.deferredMessages.clear();
