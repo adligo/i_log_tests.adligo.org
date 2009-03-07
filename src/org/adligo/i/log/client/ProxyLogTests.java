@@ -15,6 +15,7 @@ public class ProxyLogTests extends TestCase {
 	LogMockDelegate example = new LogMockDelegate();
 	LogMockDelegate delegate = new LogMockDelegate();
 	LogMockDelegate delegate2;
+	private String exampleMessage = "";
 	
 	public void testLogProxyNPEs() {
 		ProxyLog log = new ProxyLog(this.getClass());
@@ -346,6 +347,11 @@ public class ProxyLogTests extends TestCase {
 		assertOutput();
 	}
 	
+	/**
+	 * this compares the LogMockDelegate
+	 * classes which have a Message, Level and Exception
+	 * 
+	 */
 	public void assertOutput() {
 		assertEquals("should match",example, delegate);
 		delegate.log(-10, null, null);
@@ -355,6 +361,11 @@ public class ProxyLogTests extends TestCase {
 		}
 	}
 	
+	/**
+	 * this sets the LogMockDelegate so that
+	 *  it hasn't recieved a message
+	 *  so that assertOutput will 
+	 */
 	public void setupNextBlock() {
 		example.log(-10, null, null);
 		delegate.log(-10, null, null);
@@ -372,7 +383,8 @@ public class ProxyLogTests extends TestCase {
 	}
 	
 	public void setTestLog(ProxyLog log, I_Map map, String level) {
-		map.put(this.getClass().getName(), level);
+		String key = this.getClass().getName();
+		map.put(key, level);
 		log.setLogLevel(map);
 	}
 	

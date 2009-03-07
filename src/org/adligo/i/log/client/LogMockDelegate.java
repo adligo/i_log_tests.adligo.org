@@ -8,7 +8,7 @@ public class LogMockDelegate implements I_LogDelegate {
 
 	public void log(int type, Object p_message, Throwable p_t) {
 		level = type;
-		message = message;
+		message = p_message;
 		t = p_t;
 	}
 
