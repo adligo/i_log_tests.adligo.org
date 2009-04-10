@@ -381,5 +381,23 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		this.errTrace = errTrace;
 	}
 
+	public void testGetLogLevels() {
+		I_Map props = new MapWrapper(new HashMap());
+		props.put("defaultlog", "WARN");
+		props.put(SimpleLogTests.class.getName(), "INFO");
+		
+		short level = SimpleLog.getLogLevel(props, SimpleLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_INFO, level);
+		
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_WARN, level);
+		
+		props.put("defaultlog", "DEBUG");
+		level = SimpleLog.getLogLevel(props, SimpleLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_INFO, level);
+		
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
+	}
 
 }
