@@ -398,6 +398,29 @@ public class SimpleLogTests extends TestCase implements I_LogOutput {
 		
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
+		
+		props.put("defaultlog", "WARN");
+		props.put("org.adligo.i.log.client", "DEBUG");
+		
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
+		
+		props.remove("org.adligo.i.log.client");
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_WARN, level);
+		
+		props.put("org.adligo.i", "DEBUG");
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
+		
+		props.put("org.adligo.i.log", "WARN");
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_WARN, level);
+		
+		props.put("org.adligo.i.log", "TRACE");
+		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
+		assertEquals(DeferredLog.LOG_LEVEL_TRACE, level);
+		
 	}
 
 }
