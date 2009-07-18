@@ -19,6 +19,7 @@ public class DeferredLogTests extends TestCase implements I_LogOutput {
 	public void setUp() throws Exception {
 		J2SEPlatform.init();
 	}
+	@SuppressWarnings("unchecked")
 	public void testPrePostInitalizationState() throws Exception {
 		log = new DeferredLog(DeferredLogTests.class);
 		String message = "before the deferred log has " +
@@ -87,6 +88,7 @@ public class DeferredLogTests extends TestCase implements I_LogOutput {
 		assertTrue(message, log.isFatalEnabled());
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void testDeferrment() throws Exception {
 		DeferredLog.deferredMessages.clear();
 		
