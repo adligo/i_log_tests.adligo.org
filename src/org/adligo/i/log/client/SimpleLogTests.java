@@ -2,12 +2,11 @@ package org.adligo.i.log.client;
 
 import java.util.HashMap;
 
-import junit.framework.TestCase;
-
 import org.adligo.i.util.client.I_Map;
 import org.adligo.j2se.util.MapWrapper;
+import org.adligo.tests.ATest;
 
-public class SimpleLogTests extends TestCase implements I_LogOutput {
+public class SimpleLogTests extends ATest implements I_LogOutput {
 	private String currentLog = "";
 	private String newMessage = "";
 	private String errTrace;

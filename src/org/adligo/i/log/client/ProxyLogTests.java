@@ -2,15 +2,12 @@ package org.adligo.i.log.client;
 
 import java.util.HashMap;
 
-import org.adligo.i.util.client.CollectionFactory;
 import org.adligo.i.util.client.I_Map;
-import org.adligo.j2se.util.J2SECollectionFactory;
 import org.adligo.j2se.util.J2SEPlatform;
 import org.adligo.j2se.util.MapWrapper;
+import org.adligo.tests.ATest;
 
-import junit.framework.TestCase;
-
-public class ProxyLogTests extends TestCase {
+public class ProxyLogTests extends ATest {
 	Exception x = new Exception("PEx");
 	LogMockDelegate example = new LogMockDelegate();
 	LogMockDelegate delegate = new LogMockDelegate();

@@ -5,10 +5,9 @@ import java.util.HashMap;
 import org.adligo.i.util.client.I_Collection;
 import org.adligo.j2se.util.J2SEPlatform;
 import org.adligo.j2se.util.MapWrapper;
+import org.adligo.tests.ATest;
 
-import junit.framework.TestCase;
-
-public class DeferredLogTests extends TestCase implements I_LogOutput {
+public class DeferredLogTests extends ATest implements I_LogOutput {
 
 	private int counter = 0;
 	DeferredLog log = new DeferredLog(DeferredLogTests.class);
