@@ -1,5 +1,6 @@
-package org.adligo.i.log.client;
+package org.adligo.i.log.client.models;
 
+import org.adligo.i.log.client.models.LogUrl;
 import org.adligo.tests.ATest;
 
 public class LogUrlTests extends ATest {

@@ -351,7 +351,7 @@ public class ProxyLogTests extends ATest {
 	 */
 	public void assertOutput() {
 		assertEquals("should match",example, delegate);
-		delegate.log(-10, null, null);
+		delegate.log((short) -10, null, null);
 		if (delegate2 != null) {
 			assertEquals("should match",example, delegate2);
 			//System.out.println("assert 2");
@@ -364,18 +364,18 @@ public class ProxyLogTests extends ATest {
 	 *  so that assertOutput will 
 	 */
 	public void setupNextBlock() {
-		example.log(-10, null, null);
-		delegate.log(-10, null, null);
+		example.log((short) -10, null, null);
+		delegate.log((short) -10, null, null);
 		if (delegate2 != null) {
-			delegate2.log(-10, null, null);
+			delegate2.log((short) -10, null, null);
 		}
 	}
 	
-	public void setupNextMessage(int level, String p, Throwable t) {
+	public void setupNextMessage(short level, String p, Throwable t) {
 		example.log(level, p, t);
-		delegate.log(-10, null, null);
+		delegate.log((short) -10, null, null);
 		if (delegate2 != null) {
-			delegate2.log(-10, null, null);
+			delegate2.log((short) -10, null, null);
 		}
 	}
 	

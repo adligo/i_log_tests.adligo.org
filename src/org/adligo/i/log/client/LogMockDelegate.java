@@ -2,11 +2,11 @@ package org.adligo.i.log.client;
 
 public class LogMockDelegate implements I_LogDelegate {
 
-	private int level = -10;
+	private short level = (short) -10;
 	private Object message;
 	private Throwable t;
 
-	public void log(int type, Object p_message, Throwable p_t) {
+	public void log(short type, Object p_message, Throwable p_t) {
 		level = type;
 		message = p_message;
 		t = p_t;
