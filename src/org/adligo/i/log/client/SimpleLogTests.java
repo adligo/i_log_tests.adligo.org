@@ -3,6 +3,7 @@ package org.adligo.i.log.client;
 import java.util.HashMap;
 
 import org.adligo.i.util.client.I_Map;
+import org.adligo.i.util.client.MapFactory;
 import org.adligo.j2se.util.MapWrapper;
 import org.adligo.tests.ATest;
 
@@ -120,7 +121,40 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		map.put("defaultlog", level);
 		log.setLogLevel(map);
 	}
-
+	
+	/**
+	 * fix for defaultlog
+	 * set to something besides INFO
+	 * 
+	 */
+	public void testgetStringProperty() {
+		LogPlatform.setDebug(true);
+		
+		I_Map props = MapFactory.create();
+		
+		props.put("defaultlog", "DEBUG");
+		
+		short result = SimpleLog.getLogLevel(props, "org.adligo");
+		assertEquals(I_LogDelegate.LOG_LEVEL_DEBUG, result);
+		
+		props.put("org", "WARN");
+		result = SimpleLog.getLogLevel(props, "org.adligo");
+		assertEquals(I_LogDelegate.LOG_LEVEL_WARN, result);
+		
+		props.put("org.adligo", "INFO");
+		result = SimpleLog.getLogLevel(props, "org.adligo");
+		assertEquals(I_LogDelegate.LOG_LEVEL_INFO, result);
+		
+		props.put("defaultlog", "FATAL");
+		result = SimpleLog.getLogLevel(props, "com.bar");
+		assertEquals(I_LogDelegate.LOG_LEVEL_FATAL, result);
+		
+		result = SimpleLog.getLogLevel(props, "org.adligo");
+		assertEquals(I_LogDelegate.LOG_LEVEL_INFO, result);
+	}
+	
+	
+	
 	public void assertFatal(SimpleLog log) {
 		setupNextBlock();
 		log.trace("hey");
