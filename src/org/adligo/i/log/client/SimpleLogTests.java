@@ -38,6 +38,7 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		assertEquals("Sould match", currentLog,p);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void testOutputs() {
 		SimpleLog.setOut(this);
 		
@@ -414,6 +415,7 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		this.errTrace = errTrace;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void testGetLogLevels() {
 		I_Map props = new MapWrapper(new HashMap());
 		props.put("defaultlog", "WARN");
