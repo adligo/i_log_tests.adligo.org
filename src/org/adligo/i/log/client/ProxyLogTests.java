@@ -12,7 +12,6 @@ public class ProxyLogTests extends ATest {
 	LogMockDelegate example = new LogMockDelegate();
 	LogMockDelegate delegate = new LogMockDelegate();
 	LogMockDelegate delegate2;
-	private String exampleMessage = "";
 	
 	public void testLogProxyNPEs() {
 		ProxyLog log = new ProxyLog(this.getClass());
@@ -42,6 +41,7 @@ public class ProxyLogTests extends ATest {
 		runAsserts(log);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void runAsserts(ProxyLog log) {
 		log.setLevel(I_LogDelegate.LOG_LEVEL_FATAL);
 		assertFatal(log);
