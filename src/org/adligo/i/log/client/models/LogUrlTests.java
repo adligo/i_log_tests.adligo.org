@@ -16,7 +16,7 @@ public class LogUrlTests extends ATest {
 		assertEquals("l=1",url.toQueryString());
 		
 		url.addMissingParameters();
-		assertEquals("hey?l=1&m=&s=&t=&n=&w=FAIL_ON_PURPOSE",url.toString());
+		assertEquals("hey?l=1&m=&s=&t=&n=&w=",url.toString());
 		//assertEquals("hey?l=1&m=&s=&t=&n=&w=",url.toString());
 		assertEquals("l=1&m=&s=&t=&n=&w=",url.toQueryString());
 		
