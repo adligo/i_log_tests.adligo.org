@@ -1,5 +1,7 @@
-package org.adligo.i.log.client;
+package org.adligo.i.log;
 
+import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.client.SimpleFormatter;
 import org.adligo.i.log.client.models.FormatItem;
 import org.adligo.i.log.client.models.StringLogMessage;
 import org.adligo.i.util.client.I_Iterator;
@@ -9,7 +11,7 @@ public class SimpleFormatTests extends ATest {
 
 	
 	public void testSimpleFormat() {
-		SimpleFormatter sf = new SimpleFormatter();
+		MockSimpleFormatter sf = new MockSimpleFormatter();
 		
 		sf.setFormatString("%p [%t]: %c - %m");
 		I_Iterator it = sf.getItems();
@@ -55,7 +57,7 @@ public class SimpleFormatTests extends ATest {
 	}
 	
 	public void testSimpleFormat2() {
-		SimpleFormatter sf = new SimpleFormatter();
+		MockSimpleFormatter sf = new MockSimpleFormatter();
 		
 		sf.setFormatString("%p %c{1} - %m");
 		I_Iterator it = sf.getItems();

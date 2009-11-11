@@ -1,5 +1,7 @@
-package org.adligo.i.log.client;
+package org.adligo.i.log;
 
+import org.adligo.i.log.client.Log;
+import org.adligo.i.log.client.LogFactory;
 import org.adligo.tests.ATest;
 
 public class SameLogFetchRequest extends ATest {

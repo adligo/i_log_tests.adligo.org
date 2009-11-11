@@ -1,7 +1,13 @@
-package org.adligo.i.log.client;
+package org.adligo.i.log;
 
 import java.util.HashMap;
 
+import org.adligo.i.log.client.DeferredLog;
+import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.client.I_LogOutput;
+import org.adligo.i.log.client.LogPlatform;
+import org.adligo.i.log.client.SimpleLog;
+import org.adligo.i.log.client.SystemErrOutput;
 import org.adligo.i.util.client.I_Map;
 import org.adligo.i.util.client.MapFactory;
 import org.adligo.j2se.util.MapWrapper;
@@ -40,7 +46,7 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 
 	@SuppressWarnings("unchecked")
 	public void testOutputs() {
-		SimpleLog.setOut(this);
+		MockSimpleLog.setOut(this);
 		
 		SimpleLog log = new SimpleLog("TestLog", new MapWrapper(new HashMap()));
 		log.setLevel(I_LogDelegate.LOG_LEVEL_FATAL);
@@ -110,7 +116,7 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		setTestLog(log, map, "TRACE");
 		assertTrace(log);
 		
-		SimpleLog.setOut(new SystemErrOutput());
+		MockSimpleLog.setOut(new SystemErrOutput());
 	}
 
 	public void setTestLog(SimpleLog log, I_Map map, String level) {
@@ -435,12 +441,12 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
 		
 		props.put("defaultlog", "WARN");
-		props.put("org.adligo.i.log.client", "DEBUG");
+		props.put("org.adligo.i.log", "DEBUG");
 		
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
 		
-		props.remove("org.adligo.i.log.client");
+		props.remove("org.adligo.i.log");
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_WARN, level);
 		

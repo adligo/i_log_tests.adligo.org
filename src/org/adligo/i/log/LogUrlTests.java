@@ -1,4 +1,4 @@
-package org.adligo.i.log.client.models;
+package org.adligo.i.log;
 
 import org.adligo.i.log.client.models.LogUrl;
 import org.adligo.tests.ATest;

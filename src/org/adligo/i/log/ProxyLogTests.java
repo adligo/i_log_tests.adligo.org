@@ -1,7 +1,9 @@
-package org.adligo.i.log.client;
+package org.adligo.i.log;
 
 import java.util.HashMap;
 
+import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.client.ProxyLog;
 import org.adligo.i.util.client.I_Map;
 import org.adligo.j2se.util.J2SEPlatform;
 import org.adligo.j2se.util.MapWrapper;

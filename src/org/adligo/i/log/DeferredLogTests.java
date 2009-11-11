@@ -1,7 +1,11 @@
-package org.adligo.i.log.client;
+package org.adligo.i.log;
 
 import java.util.HashMap;
 
+import org.adligo.i.log.client.DeferredLog;
+import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.client.I_LogOutput;
+import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.util.client.I_Collection;
 import org.adligo.j2se.util.J2SEPlatform;
 import org.adligo.j2se.util.MapWrapper;
@@ -89,14 +93,14 @@ public class DeferredLogTests extends ATest implements I_LogOutput {
 	
 	@SuppressWarnings("unchecked")
 	public void testDeferrment() throws Exception {
-		DeferredLog.deferredMessages.clear();
+		MockDeferredLog.getDeferredMessages().clear();
 		
 		logMessages();
-		I_Collection messages = DeferredLog.deferredMessages;
+		I_Collection messages = MockDeferredLog.getDeferredMessages();
 		assertEquals("should be this many messages", 12, messages.size());
 		
 		SimpleLog sl = new SimpleLog("", new MapWrapper(new HashMap()));
-		SimpleLog.setOut(this);
+		MockSimpleLog.setOut(this);
 		log.addDelegate(sl);
 		log.setLevel(I_LogDelegate.LOG_LEVEL_TRACE);
 		logMessages();
