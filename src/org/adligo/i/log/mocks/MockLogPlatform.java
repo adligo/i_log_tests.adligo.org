@@ -7,6 +7,7 @@ public class MockLogPlatform extends LogPlatform {
 
 	public static void unInit() {
 		LogPlatform.isInit = false;
+		LogPlatform.isInitLevelsSet = false;
 	}
 	
 	public static void setOutput(I_SystemOutput p) {
