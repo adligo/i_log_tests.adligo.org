@@ -4,16 +4,16 @@ import java.util.HashMap;
 
 import org.adligo.i.log.client.DeferredLog;
 import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.I_LogOutput;
 import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.SimpleLog;
-import org.adligo.i.log.client.SystemErrOutput;
 import org.adligo.i.util.client.I_Map;
+import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.client.MapFactory;
+import org.adligo.i.util.client.SystemOutput;
 import org.adligo.j2se.util.MapWrapper;
 import org.adligo.tests.ATest;
 
-public class SimpleLogTests extends ATest implements I_LogOutput {
+public class SimpleLogTests extends ATest implements I_SystemOutput {
 	private String currentLog = "";
 	private String newMessage = "";
 	private String errTrace;
@@ -39,7 +39,7 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 	}
 	
 	@Override
-	public void write(String p) {
+	public void out(String p) {
 		newMessage = p;
 		assertEquals("Sould match", currentLog,p);
 	}
@@ -116,7 +116,7 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		setTestLog(log, map, "TRACE");
 		assertTrace(log);
 		
-		MockSimpleLog.setOut(new SystemErrOutput());
+		MockSimpleLog.setOut(SystemOutput.INSTANCE);
 	}
 
 	public void setTestLog(SimpleLog log, I_Map map, String level) {
@@ -461,6 +461,18 @@ public class SimpleLogTests extends ATest implements I_LogOutput {
 		props.put("org.adligo.i.log", "TRACE");
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_TRACE, level);
+		
+	}
+
+	@Override
+	public void err(String p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void exception(Exception x) {
+		// TODO Auto-generated method stub
 		
 	}
 

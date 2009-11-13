@@ -4,14 +4,14 @@ import java.util.HashMap;
 
 import org.adligo.i.log.client.DeferredLog;
 import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.I_LogOutput;
 import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.util.client.I_Collection;
+import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.j2se.util.J2SEPlatform;
 import org.adligo.j2se.util.MapWrapper;
 import org.adligo.tests.ATest;
 
-public class DeferredLogTests extends ATest implements I_LogOutput {
+public class DeferredLogTests extends ATest implements I_SystemOutput {
 
 	private int counter = 0;
 	DeferredLog log = new DeferredLog(DeferredLogTests.class);
@@ -149,7 +149,7 @@ public class DeferredLogTests extends ATest implements I_LogOutput {
 		log.fatal("fatalX", new Exception("fatal"));
 	}
 	
-	public void write(String p) {
+	public void out(String p) {
 		switch (counter) {
 			case 0:
 				assertTrue("should have message with traceS",
@@ -201,5 +201,15 @@ public class DeferredLogTests extends ATest implements I_LogOutput {
 				break;
 		}
 		counter++;
+	}
+	@Override
+	public void err(String p) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void exception(Exception x) {
+		// TODO Auto-generated method stub
+		
 	}
 }

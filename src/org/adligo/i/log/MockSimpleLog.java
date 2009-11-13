@@ -1,8 +1,8 @@
 package org.adligo.i.log;
 
-import org.adligo.i.log.client.I_LogOutput;
 import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.util.client.I_Map;
+import org.adligo.i.util.client.I_SystemOutput;
 
 public class MockSimpleLog extends SimpleLog {
 
@@ -10,11 +10,8 @@ public class MockSimpleLog extends SimpleLog {
 		super(name, props);
 	}
 	
-	protected static I_LogOutput getOut() {
-		return out;
-	}
 
-	protected static void setOut(I_LogOutput out) {
+	protected static void setOut(I_SystemOutput out) {
 		SimpleLog.out = out;
 	}
 

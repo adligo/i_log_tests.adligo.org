@@ -7,7 +7,6 @@ import org.adligo.i.log.client.I_LogDelegate;
 import org.adligo.i.log.client.I_LogDispatcher;
 import org.adligo.i.log.client.I_LogFactory;
 import org.adligo.i.log.client.I_LogMutant;
-import org.adligo.i.log.client.I_LogOutput;
 import org.adligo.i.log.client.I_ProxyLog;
 import org.adligo.i.log.client.Log;
 import org.adligo.i.log.client.LogFactory;
@@ -16,7 +15,6 @@ import org.adligo.i.log.client.ProxyLog;
 import org.adligo.i.log.client.SimpleFormatter;
 import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.log.client.SingleDispatchLog;
-import org.adligo.i.log.client.SystemErrOutput;
 import org.adligo.i.log.client.models.FormatItem;
 import org.adligo.i.log.client.models.I_LogMessage;
 import org.adligo.i.log.client.models.LogMessage;
@@ -26,14 +24,9 @@ import org.adligo.i.log.client.models.ObjectLogMessage;
 import org.adligo.i.log.client.models.StringLogMessage;
 import org.adligo.i.util.client.ClassUsageView;
 import org.adligo.i.util.client.I_UsageHolder;
-import org.adligo.i.util.client.MapFactory;
 import org.adligo.i.util.client.MockMap;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 
 /**
@@ -67,7 +60,6 @@ public class LogEntryPoint implements EntryPoint {
 		holder.addUsed(I_LogDispatcher.class);
 		holder.addUsed(I_LogFactory.class);
 		holder.addUsed(I_LogMutant.class);
-		holder.addUsed(I_LogOutput.class);
 		holder.addUsed(I_ProxyLog.class);
 		holder.addUsed(Log.class);
 		holder.addUsed(LogFactory.class);
@@ -76,7 +68,6 @@ public class LogEntryPoint implements EntryPoint {
 		holder.addUsed(SimpleFormatter.class);
 		holder.addUsed(new SimpleLog("guys", new MockMap()));
 		holder.addUsed(new SingleDispatchLog("testing", new MockMap()));
-		holder.addUsed(new SystemErrOutput());
 		
 		holder.addUsed(FormatItem.class);
 		holder.addUsed(I_LogMessage.class);
