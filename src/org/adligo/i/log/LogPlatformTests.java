@@ -9,10 +9,12 @@ import org.adligo.i.log.mocks.MockLogPlatform;
 import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.mocks.MockPropertyFactory;
 import org.adligo.j2se.util.J2SEPlatform;
+import org.mortbay.log.Log;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	private Exception lastExceptionPrint = null;
-
+	private boolean log = true;
+	
 	public void testInit() throws Exception {
 		Exception ex = null;
 		try {
@@ -46,8 +48,13 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 		URL url = LogPlatform.class.getResource("/adligo_log_log4j_factory.properties");
 		String fileName = url.getFile();
 		
+		
+		
 		LogPlatform.init("adligo_log_log4j_factory.properties");
 		assertNotNull(lastExceptionPrint);
+		if (log) {
+			System.out.println("exception is; \n" + lastExceptionPrint .getMessage());
+		}
 		assertEquals("Error reading property file '/adligo_log_log4j_factory.properties'  file system name '" + fileName +"' file content; " +
 				"\norg.adligo.j2se.util.MapWrapper [[[[items[[[,defaultlog,DEBUGlog_factory,org.adligo.i.log.log4j.Log4jFactory]]]end_map_items]]]]", 
 				lastExceptionPrint .getMessage());
