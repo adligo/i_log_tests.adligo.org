@@ -43,7 +43,8 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 		lastExceptionPrint  = null;
 		LogPlatform.init("adligo_log_log4j_factory.properties");
 		assertNotNull(lastExceptionPrint);
-		assertEquals("Error reading property file '/adligo_log_log4j_factory.properties'", 
+		assertEquals("Error reading property file '/adligo_log_log4j_factory.properties'  file system name '/C:/cygwin/home/scott/org_src/i_log_tests/war/WEB-INF/classes/adligo_log_log4j_factory.properties' file content; " +
+				"\norg.adligo.j2se.util.MapWrapper [[[[items[[[,defaultlog,DEBUGlog_factory,org.adligo.i.log.log4j.Log4jFactory]]]end_map_items]]]]", 
 				lastExceptionPrint .getMessage());
 		
 		assertNotNull(lastExceptionPrint.getCause());
