@@ -51,12 +51,14 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 		
 		
 		LogPlatform.init("adligo_log_log4j_factory.properties");
+		String expected = "Error reading property file '/adligo_log_log4j_factory.properties'  file system name '" + fileName +"' file content; " +
+		"\norg.adligo.j2se.util.MapWrapper [[[[items[[[,defaultlog,DEBUGlog_factory,org.adligo.i.log.log4j.Log4jFactory]]]end_map_items]]]]";
 		assertNotNull(lastExceptionPrint);
 		if (log) {
 			System.out.println("exception is; \n" + lastExceptionPrint .getMessage());
+			System.out.println("expected exception is; \n" +  expected);
 		}
-		assertEquals("Error reading property file '/adligo_log_log4j_factory.properties'  file system name '" + fileName +"' file content; " +
-				"\norg.adligo.j2se.util.MapWrapper [[[[items[[[,defaultlog,DEBUGlog_factory,org.adligo.i.log.log4j.Log4jFactory]]]end_map_items]]]]", 
+		assertEquals(expected, 
 				lastExceptionPrint .getMessage());
 		
 		assertNotNull(lastExceptionPrint.getCause());
