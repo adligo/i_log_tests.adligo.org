@@ -11,5 +11,5 @@
 	<classpathentry kind="var" path="GWT_HOME/gwt-user.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/i_util_tests"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT (3)"/>
-	<classpathentry kind="output" path="war/WEB-INF/classes_e"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
