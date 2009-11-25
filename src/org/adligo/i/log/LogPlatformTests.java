@@ -12,7 +12,7 @@ import org.adligo.j2se.util.J2SEPlatform;
 import org.mortbay.log.Log;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {
-	private Exception lastExceptionPrint = null;
+	private Throwable lastExceptionPrint = null;
 	private boolean log = true;
 	
 	public void testInit() throws Exception {
@@ -90,7 +90,7 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	}
 
 	@Override
-	public void exception(Exception x) {
+	public void exception(Throwable x) {
 		lastExceptionPrint  = x;
 	}
 

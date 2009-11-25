@@ -471,7 +471,7 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 	}
 
 	@Override
-	public void exception(Exception x) {
+	public void exception(Throwable x) {
 		// TODO Auto-generated method stub
 		
 	}
