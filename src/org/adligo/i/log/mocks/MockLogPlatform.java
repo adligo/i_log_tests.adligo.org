@@ -8,6 +8,7 @@ public class MockLogPlatform extends LogPlatform {
 	public static void unInit() {
 		LogPlatform.isInit = false;
 		LogPlatform.isInitLevelsSet = false;
+		MockDefaultLogFactory.uninit();
 	}
 	
 	public static void setOutput(I_SystemOutput p) {
