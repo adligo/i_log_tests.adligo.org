@@ -13,4 +13,8 @@ public class MockLogPlatform extends LogPlatform {
 	public static void setOutput(I_SystemOutput p) {
 		LogPlatform.setOut(p);
 	}
+	
+	public static LogPlatform getInstance() {
+		return LogPlatform.instance;
+	}
 }
