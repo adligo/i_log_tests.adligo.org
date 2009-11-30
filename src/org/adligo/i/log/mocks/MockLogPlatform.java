@@ -1,6 +1,7 @@
 package org.adligo.i.log.mocks;
 
 import org.adligo.i.log.client.LogPlatform;
+import org.adligo.i.util.client.ArrayCollection;
 import org.adligo.i.util.client.I_SystemOutput;
 
 public class MockLogPlatform extends LogPlatform {
@@ -9,6 +10,14 @@ public class MockLogPlatform extends LogPlatform {
 		LogPlatform.isInit = false;
 		LogPlatform.isInitLevelsSet = false;
 		MockDefaultLogFactory.uninit();
+		MockDeferredLog.uninit();
+	}
+
+	public static void unInit(ArrayCollection preInitLoggers) {
+		LogPlatform.isInit = false;
+		LogPlatform.isInitLevelsSet = false;
+		MockDefaultLogFactory.uninit(preInitLoggers);
+		MockDeferredLog.uninit();
 	}
 	
 	public static void setOutput(I_SystemOutput p) {
