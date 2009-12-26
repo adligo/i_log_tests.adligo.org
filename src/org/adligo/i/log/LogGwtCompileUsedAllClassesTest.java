@@ -24,7 +24,7 @@ public class LogGwtCompileUsedAllClassesTest extends ATest {
 		
 		Set<Class<?>> classes = GwtCompileUsedAllClassesAsserter.getClasses(
 				"org.adligo.i.log.client", ignore);
-		assertEquals("there should be classes in org.adligo.i.log.client ", 22, classes.size());
+		assertEquals("there should be classes in org.adligo.i.log.client ", 24, classes.size());
 		
 		GwtCompileUsedAllClassesAsserter holder = new GwtCompileUsedAllClassesAsserter();
 		LogEntryPoint entryPoint = new LogEntryPoint(holder);
