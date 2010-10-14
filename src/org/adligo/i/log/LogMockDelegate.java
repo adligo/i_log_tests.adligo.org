@@ -14,7 +14,7 @@ public class LogMockDelegate implements I_LogDelegate {
 		t = p_t;
 	}
 
-	protected int getLevel() {
+	public short getLevel() {
 		return level;
 	}
 
