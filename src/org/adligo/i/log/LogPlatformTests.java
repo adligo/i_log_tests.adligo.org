@@ -28,7 +28,7 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 		}
 		assertNotNull(ex);
 		assertEquals("Please initalize your platform BEFORE the LogPlatform, " +
-				"for instance J2SEPlatform.init(), GWTPlatform.init(), J2MEPlatform.init. ", 
+				"for instance JSEPlatform.init(), GWTPlatform.init(), J2MEPlatform.init. ", 
 				ex.getMessage());
 		
 		JSEPlatform.init();
