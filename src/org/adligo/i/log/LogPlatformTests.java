@@ -11,7 +11,7 @@ import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.mocks.MockLogPlatform;
 import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.mocks.MockPropertyFactory;
-import org.adligo.j2se.util.J2SEPlatform;
+import org.adligo.jse.util.JSEPlatform;
 import org.mortbay.log.Log;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {
@@ -31,7 +31,7 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 				"for instance J2SEPlatform.init(), GWTPlatform.init(), J2MEPlatform.init. ", 
 				ex.getMessage());
 		
-		J2SEPlatform.init();
+		JSEPlatform.init();
 		MockLogPlatform.unInit();
 		LogPlatform.init();
 		
@@ -77,7 +77,7 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	protected void setUp() throws Exception {
 		// TODO Auto-generated method stub
 		super.setUp();
-		J2SEPlatform.init();
+		JSEPlatform.init();
 		MockLogPlatform.setOutput(this);
 		MockPropertyFactory.uninit();
 	}
@@ -86,7 +86,7 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	protected void tearDown() throws Exception {
 		// TODO Auto-generated method stub
 		super.tearDown();
-		J2SEPlatform.init();
+		JSEPlatform.init();
 	}
 
 	@Override

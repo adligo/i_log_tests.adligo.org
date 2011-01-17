@@ -10,7 +10,7 @@ import org.adligo.i.util.client.I_Map;
 import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.client.MapFactory;
 import org.adligo.i.util.client.SystemOutput;
-import org.adligo.j2se.util.MapWrapper;
+import org.adligo.jse.util.MapWrapper;
 import org.adligo.tests.ATest;
 
 public class SimpleLogTests extends ATest implements I_SystemOutput {

@@ -7,8 +7,8 @@ import org.adligo.i.log.client.I_LogDelegate;
 import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.util.client.I_Collection;
 import org.adligo.i.util.client.I_SystemOutput;
-import org.adligo.j2se.util.J2SEPlatform;
-import org.adligo.j2se.util.MapWrapper;
+import org.adligo.jse.util.JSEPlatform;
+import org.adligo.jse.util.MapWrapper;
 import org.adligo.tests.ATest;
 
 public class DeferredLogTests extends ATest implements I_SystemOutput {
@@ -20,7 +20,7 @@ public class DeferredLogTests extends ATest implements I_SystemOutput {
 	LogMockDelegate delegate = new LogMockDelegate();
 	
 	public void setUp() throws Exception {
-		J2SEPlatform.init();
+		JSEPlatform.init();
 	}
 	@SuppressWarnings("unchecked")
 	public void testPrePostInitalizationState() throws Exception {

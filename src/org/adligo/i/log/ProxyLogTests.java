@@ -5,8 +5,8 @@ import java.util.HashMap;
 import org.adligo.i.log.client.I_LogDelegate;
 import org.adligo.i.log.client.ProxyLog;
 import org.adligo.i.util.client.I_Map;
-import org.adligo.j2se.util.J2SEPlatform;
-import org.adligo.j2se.util.MapWrapper;
+import org.adligo.jse.util.JSEPlatform;
+import org.adligo.jse.util.MapWrapper;
 import org.adligo.tests.ATest;
 
 public class ProxyLogTests extends ATest {
@@ -38,7 +38,7 @@ public class ProxyLogTests extends ATest {
 		runAsserts(log);
 		delegate2 = new LogMockDelegate();
 		
-		J2SEPlatform.init();
+		JSEPlatform.init();
 		log.addDelegate(delegate2);
 		runAsserts(log);
 	}
