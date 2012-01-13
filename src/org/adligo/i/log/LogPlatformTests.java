@@ -68,7 +68,7 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 		LogPlatform.init("/adligo_log_log4j_factory.properties");
 		assertNotNull(lastExceptionPrint);
 		assertEquals("log_factory is null, because your code needs to call " +
-				"LogPlatform.addLogFactoryClass(String name, I_LogFactory p) " +
+				"LogPlatform.init(String name, I_LogFactory p) " +
 				"with a valid instance of your logFactory org.adligo.i.log.log4j.Log4jFactory!", 
 				lastExceptionPrint.getMessage());
 	}
