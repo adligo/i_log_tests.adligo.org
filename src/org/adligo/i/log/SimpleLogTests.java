@@ -29,9 +29,9 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		
 		StackTraceElement[] elements = x.getStackTrace();
 		StringBuffer sb = new StringBuffer();
-		sb.append(" <java.lang.Exception: Ex>\n");
+		sb.append("\n\t <java.lang.Exception: Ex>\n");
 		for (int i = 0; i < elements.length; i++) {
-			sb.append("\t at ");
+			sb.append("\t\t at ");
 			sb.append(elements[i].toString());
 			sb.append("\n");
 		}
