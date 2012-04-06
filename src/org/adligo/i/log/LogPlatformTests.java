@@ -12,7 +12,6 @@ import org.adligo.i.log.mocks.MockLogPlatform;
 import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.mocks.MockPropertyFactory;
 import org.adligo.jse.util.JSEPlatform;
-import org.mortbay.log.Log;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	private Throwable lastExceptionPrint = null;

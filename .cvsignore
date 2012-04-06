@@ -4,3 +4,4 @@ classes
 test_output
 gwt_test_output
 test_failure.properties
+emma_dir
