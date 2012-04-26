@@ -29,9 +29,9 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		
 		StackTraceElement[] elements = x.getStackTrace();
 		StringBuffer sb = new StringBuffer();
-		sb.append("\n\t <java.lang.Exception: Ex>\n");
+		sb.append("\n   <java.lang.Exception: Ex>\n");
 		for (int i = 0; i < elements.length; i++) {
-			sb.append("\t\t at ");
+			sb.append("     at ");
 			sb.append(elements[i].toString());
 			sb.append("\n");
 		}
@@ -193,10 +193,10 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		log.error("hey", x);
 		assertOutputNotCalled();
 		
-		setupNextMessage("[FATAL] TestLog - \they" + errTrace);
+		setupNextMessage("[FATAL] TestLog -   hey" + errTrace);
 		log.fatal("hey", x);
 		assertOutputCalled();
-		setupNextMessage("[FATAL] TestLog - \they\n");
+		setupNextMessage("[FATAL] TestLog -   hey\n");
 		log.fatal("hey");
 		assertOutputCalled();
 		
@@ -220,17 +220,17 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		log.warn("hey");
 		assertOutputNotCalled();
 		
-		setupNextMessage("[ERROR] TestLog - \they\n");
+		setupNextMessage("[ERROR] TestLog -   hey\n");
 		log.error("hey");
 		assertOutputCalled();
-		setupNextMessage("[ERROR] TestLog - \they" + errTrace);
+		setupNextMessage("[ERROR] TestLog -   hey" + errTrace);
 		log.error("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[FATAL] TestLog - \they\n");
+		setupNextMessage("[FATAL] TestLog -   hey\n");
 		log.fatal("hey");
 		assertOutputCalled();
-		setupNextMessage("[FATAL] TestLog - \they" + errTrace);
+		setupNextMessage("[FATAL] TestLog -   hey" + errTrace);
 		log.fatal("hey", x);
 		assertOutputCalled();
 	}
@@ -248,24 +248,24 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		log.info("hey");
 		assertOutputNotCalled();
 		
-		setupNextMessage("[WARN] TestLog - \they\n");
+		setupNextMessage("[WARN] TestLog -   hey\n");
 		log.warn("hey");
 		assertOutputCalled();
-		setupNextMessage("[WARN] TestLog - \they" + errTrace);
+		setupNextMessage("[WARN] TestLog -   hey" + errTrace);
 		log.warn("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[ERROR] TestLog - \they\n");
+		setupNextMessage("[ERROR] TestLog -   hey\n");
 		log.error("hey");
 		assertOutputCalled();
-		setupNextMessage("[ERROR] TestLog - \they" + errTrace);
+		setupNextMessage("[ERROR] TestLog -   hey" + errTrace);
 		log.error("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[FATAL] TestLog - \they\n");
+		setupNextMessage("[FATAL] TestLog -   hey\n");
 		log.fatal("hey");
 		assertOutputCalled();
-		setupNextMessage("[FATAL] TestLog - \they" + errTrace);
+		setupNextMessage("[FATAL] TestLog -   hey" + errTrace);
 		log.fatal("hey", x);
 		assertOutputCalled();
 	}
@@ -279,31 +279,31 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		log.debug("hey");
 		assertOutputNotCalled();
 		
-		setupNextMessage("[INFO] TestLog - \they\n");
+		setupNextMessage("[INFO] TestLog -   hey\n");
 		log.info("hey");
 		assertOutputCalled();
-		setupNextMessage("[INFO] TestLog - \they" + errTrace);
+		setupNextMessage("[INFO] TestLog -   hey" + errTrace);
 		log.info("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[WARN] TestLog - \they\n");
+		setupNextMessage("[WARN] TestLog -   hey\n");
 		log.warn("hey");
 		assertOutputCalled();
-		setupNextMessage("[WARN] TestLog - \they" + errTrace);
+		setupNextMessage("[WARN] TestLog -   hey" + errTrace);
 		log.warn("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[ERROR] TestLog - \they\n");
+		setupNextMessage("[ERROR] TestLog -   hey\n");
 		log.error("hey");
 		assertOutputCalled();
-		setupNextMessage("[ERROR] TestLog - \they" + errTrace);
+		setupNextMessage("[ERROR] TestLog -   hey" + errTrace);
 		log.error("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[FATAL] TestLog - \they\n");
+		setupNextMessage("[FATAL] TestLog -   hey\n");
 		log.fatal("hey");
 		assertOutputCalled();
-		setupNextMessage("[FATAL] TestLog - \they" + errTrace);
+		setupNextMessage("[FATAL] TestLog -   hey" + errTrace);
 		log.fatal("hey", x);
 		assertOutputCalled();
 	}
@@ -313,83 +313,83 @@ public class SimpleLogTests extends ATest implements I_SystemOutput {
 		log.trace("hey");
 		assertOutputNotCalled();
 		
-		setupNextMessage("[DEBUG] TestLog - \they\n");
+		setupNextMessage("[DEBUG] TestLog -   hey\n");
 		log.debug("hey");
 		assertOutputCalled();
-		setupNextMessage("[DEBUG] TestLog - \they" + errTrace);
+		setupNextMessage("[DEBUG] TestLog -   hey" + errTrace);
 		log.debug("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[INFO] TestLog - \they\n");
+		setupNextMessage("[INFO] TestLog -   hey\n");
 		log.info("hey");
 		assertOutputCalled();
-		setupNextMessage("[INFO] TestLog - \they" + errTrace);
+		setupNextMessage("[INFO] TestLog -   hey" + errTrace);
 		log.info("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[WARN] TestLog - \they\n");
+		setupNextMessage("[WARN] TestLog -   hey\n");
 		log.warn("hey");
 		assertOutputCalled();
-		setupNextMessage("[WARN] TestLog - \they" + errTrace);
+		setupNextMessage("[WARN] TestLog -   hey" + errTrace);
 		log.warn("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[ERROR] TestLog - \they\n");
+		setupNextMessage("[ERROR] TestLog -   hey\n");
 		log.error("hey");
 		assertOutputCalled();
-		setupNextMessage("[ERROR] TestLog - \they" + errTrace);
+		setupNextMessage("[ERROR] TestLog -   hey" + errTrace);
 		log.error("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[FATAL] TestLog - \they\n");
+		setupNextMessage("[FATAL] TestLog -   hey\n");
 		log.fatal("hey");
 		assertOutputCalled();
-		setupNextMessage("[FATAL] TestLog - \they" + errTrace);
+		setupNextMessage("[FATAL] TestLog -   hey" + errTrace);
 		log.fatal("hey", x);
 		assertOutputCalled();
 	}
 	
 	
 	public void assertTrace(SimpleLog log) {
-		setupNextMessage("[TRACE] TestLog - \they\n");
+		setupNextMessage("[TRACE] TestLog -   hey\n");
 		log.trace("hey");
 		assertOutputCalled();
-		setupNextMessage("[TRACE] TestLog - \they" + errTrace);
+		setupNextMessage("[TRACE] TestLog -   hey" + errTrace);
 		log.trace("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[DEBUG] TestLog - \they\n");
+		setupNextMessage("[DEBUG] TestLog -   hey\n");
 		log.debug("hey");
 		assertOutputCalled();
-		setupNextMessage("[DEBUG] TestLog - \they" + errTrace);
+		setupNextMessage("[DEBUG] TestLog -   hey" + errTrace);
 		log.debug("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[INFO] TestLog - \they\n");
+		setupNextMessage("[INFO] TestLog -   hey\n");
 		log.info("hey");
 		assertOutputCalled();
-		setupNextMessage("[INFO] TestLog - \they" + errTrace);
+		setupNextMessage("[INFO] TestLog -   hey" + errTrace);
 		log.info("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[WARN] TestLog - \they\n");
+		setupNextMessage("[WARN] TestLog -   hey\n");
 		log.warn("hey");
 		assertOutputCalled();
-		setupNextMessage("[WARN] TestLog - \they" + errTrace);
+		setupNextMessage("[WARN] TestLog -   hey" + errTrace);
 		log.warn("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[ERROR] TestLog - \they\n");
+		setupNextMessage("[ERROR] TestLog -   hey\n");
 		log.error("hey");
 		assertOutputCalled();
-		setupNextMessage("[ERROR] TestLog - \they" + errTrace);
+		setupNextMessage("[ERROR] TestLog -   hey" + errTrace);
 		log.error("hey", x);
 		assertOutputCalled();
 		
-		setupNextMessage("[FATAL] TestLog - \they\n");
+		setupNextMessage("[FATAL] TestLog -   hey\n");
 		log.fatal("hey");
 		assertOutputCalled();
-		setupNextMessage("[FATAL] TestLog - \they" + errTrace);
+		setupNextMessage("[FATAL] TestLog -   hey" + errTrace);
 		log.fatal("hey", x);
 		assertOutputCalled();
 	}
