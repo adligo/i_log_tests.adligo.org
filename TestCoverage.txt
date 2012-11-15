@@ -1,3 +1,3 @@
 Date,Package,Coverage
-11/14/2012,org.adligo.i.log.client,70.5
-11/14/2012,org.adligo.i.log.client.models,74.5
+11/14/2012,org.adligo.i.log.client,70.5%
+11/14/2012,org.adligo.i.log.client.models,61.0%
