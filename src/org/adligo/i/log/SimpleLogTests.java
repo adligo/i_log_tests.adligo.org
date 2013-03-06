@@ -2,6 +2,8 @@ package org.adligo.i.log;
 
 import java.util.HashMap;
 
+import junit.framework.TestCase;
+
 import org.adligo.i.log.client.DeferredLog;
 import org.adligo.i.log.client.I_LogDelegate;
 import org.adligo.i.log.client.LogPlatform;
@@ -10,14 +12,23 @@ import org.adligo.i.util.client.I_Map;
 import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.client.MapFactory;
 import org.adligo.i.util.client.SystemOutput;
+import org.adligo.jse.util.JSEPlatform;
 import org.adligo.jse.util.MapWrapper;
-import org.adligo.tests.ATest;
 
-public class SimpleLogTests extends ATest implements I_SystemOutput {
+public class SimpleLogTests extends TestCase implements I_SystemOutput {
 	private String currentLog = "";
 	private String newMessage = "";
 	private String errTrace;
 	private Exception x = null;
+	
+	static {
+		try {
+			JSEPlatform.init();
+			LogPlatform.init();
+		} catch (Exception x) {
+			x.printStackTrace();
+		}
+	}
 	
 	public void setUp() {
 		try {

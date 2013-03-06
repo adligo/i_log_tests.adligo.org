@@ -1,14 +1,24 @@
 package org.adligo.i.log;
 
+import junit.framework.TestCase;
+
 import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.SimpleFormatter;
+import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.models.FormatItem;
 import org.adligo.i.log.client.models.StringLogMessage;
 import org.adligo.i.util.client.I_Iterator;
-import org.adligo.tests.ATest;
+import org.adligo.jse.util.JSEPlatform;
 
-public class SimpleFormatTests extends ATest {
+public class SimpleFormatTests extends TestCase {
 
+	static {
+		try {
+			JSEPlatform.init();
+			LogPlatform.init();
+		} catch (Exception x) {
+			x.printStackTrace();
+		}
+	}
 	
 	public void testSimpleFormat() {
 		MockSimpleFormatter sf = new MockSimpleFormatter();

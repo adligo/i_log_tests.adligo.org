@@ -2,8 +2,11 @@ package org.adligo.i.log;
 
 import java.util.HashMap;
 
+import junit.framework.TestCase;
+
 import org.adligo.i.log.client.DeferredLog;
 import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.util.client.I_Collection;
 import org.adligo.i.util.client.I_SystemOutput;
@@ -11,7 +14,7 @@ import org.adligo.jse.util.JSEPlatform;
 import org.adligo.jse.util.MapWrapper;
 import org.adligo.tests.ATest;
 
-public class DeferredLogTests extends ATest implements I_SystemOutput {
+public class DeferredLogTests extends TestCase implements I_SystemOutput {
 
 	private int counter = 0;
 	DeferredLog log = new DeferredLog(DeferredLogTests.class);
@@ -19,9 +22,15 @@ public class DeferredLogTests extends ATest implements I_SystemOutput {
 	LogMockDelegate example = new LogMockDelegate();
 	LogMockDelegate delegate = new LogMockDelegate();
 	
-	public void setUp() throws Exception {
-		JSEPlatform.init();
+	static {
+		try {
+			JSEPlatform.init();
+			LogPlatform.init();
+		} catch (Exception x) {
+			x.printStackTrace();
+		}
 	}
+	
 	@SuppressWarnings("unchecked")
 	public void testPrePostInitalizationState() throws Exception {
 		log = new DeferredLog(DeferredLogTests.class);

@@ -1,12 +1,13 @@
 package org.adligo.i.log;
 
+import junit.framework.TestCase;
+
 import org.adligo.i.log.client.models.LogMessage;
 import org.adligo.i.log.client.models.LogMessageFactory;
 import org.adligo.i.log.client.models.ObjectLogMessage;
 import org.adligo.i.log.client.models.StringLogMessage;
-import org.adligo.tests.ATest;
 
-public class LogMessageFactoryTests extends ATest {
+public class LogMessageFactoryTests extends TestCase {
 
 	public void testLogFactory() {
 		LogMessage message = LogMessageFactory.createMessage(null);

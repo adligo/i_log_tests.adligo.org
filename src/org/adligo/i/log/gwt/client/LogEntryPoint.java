@@ -11,6 +11,7 @@ import org.adligo.i.log.client.I_LogMutant;
 import org.adligo.i.log.client.I_ProxyLog;
 import org.adligo.i.log.client.Log;
 import org.adligo.i.log.client.LogFactory;
+import org.adligo.i.log.client.LogFactoryMemory;
 import org.adligo.i.log.client.LogLookup;
 import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.ProxyLog;
@@ -72,6 +73,7 @@ public class LogEntryPoint implements EntryPoint {
 		holder.addUsed(new SimpleLog("guys", new MockMap()));
 		holder.addUsed(new SingleDispatchLog("testing", new MockMap()));
 		holder.addUsed(new LogLookup("hey"));
+		holder.addUsed(new LogFactoryMemory());
 		
 		holder.addUsed(FormatItem.class);
 		holder.addUsed(I_LogMessage.class);

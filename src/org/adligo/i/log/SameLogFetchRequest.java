@@ -1,10 +1,11 @@
 package org.adligo.i.log;
 
+import junit.framework.TestCase;
+
 import org.adligo.i.log.client.Log;
 import org.adligo.i.log.client.LogFactory;
-import org.adligo.tests.ATest;
 
-public class SameLogFetchRequest extends ATest {
+public class SameLogFetchRequest extends TestCase {
 
 	public void testLogFetching() {
 		

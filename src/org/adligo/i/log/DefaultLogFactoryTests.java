@@ -1,12 +1,23 @@
 package org.adligo.i.log;
 
 import org.adligo.i.log.client.DefaultLogFactory;
-import org.adligo.i.log.mocks.MockDefaultLogFactory;
+import org.adligo.i.log.client.LogPlatform;
+import org.adligo.i.log.client.MockDefaultLogFactory;
+import org.adligo.jse.util.JSEPlatform;
 
 import junit.framework.TestCase;
 
 public class DefaultLogFactoryTests extends TestCase {
 
+	static {
+		try {
+			JSEPlatform.init();
+			LogPlatform.init();
+		} catch (Exception x) {
+			x.printStackTrace();
+		}
+	}
+	
 	/**
 	 * note this is mostly to test a optimization time
 	 * which takes this from almost 9 seconds 

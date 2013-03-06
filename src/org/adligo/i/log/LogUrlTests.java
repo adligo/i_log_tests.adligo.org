@@ -1,10 +1,24 @@
 package org.adligo.i.log;
 
+import junit.framework.TestCase;
+
+import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.models.LogUrl;
+import org.adligo.jse.util.JSECommonInit;
+import org.adligo.jse.util.JSEPlatform;
 import org.adligo.tests.ATest;
 
-public class LogUrlTests extends ATest {
+public class LogUrlTests extends TestCase {
 
+	static {
+		try {
+			JSEPlatform.init();
+			LogPlatform.init();
+		} catch (Exception x) {
+			x.printStackTrace();
+		}
+	}
+	 
 	public void testCgi() {
 		LogUrl url = new LogUrl("hey?", true);
 		assertEquals("hey?",url.toString());
