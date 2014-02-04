@@ -3,4 +3,5 @@ classes/
 classes_e/
 i_log_tests.jar
 test_failure.properties
+test_reports/
 
