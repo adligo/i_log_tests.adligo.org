@@ -1,9 +1,6 @@
 package org.adligo.i.log.client;
 
-import org.adligo.i.log.client.DefaultLogFactory;
 import org.adligo.i.util.client.HashCollection;
-import org.adligo.i.util.client.I_Map;
-import org.adligo.i.util.client.MapFactory;
 
 public class MockDefaultLogFactory extends LogFactoryMemory {
 
