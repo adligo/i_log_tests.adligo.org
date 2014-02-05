@@ -1,12 +1,10 @@
-package org.adligo.i.log;
+package org.adligo.i.log.tests;
 
 import junit.framework.TestCase;
 
 import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.models.LogUrl;
-import org.adligo.jse.util.JSECommonInit;
 import org.adligo.jse.util.JSEPlatform;
-import org.adligo.tests.ATest;
 
 public class LogUrlTests extends TestCase {
 

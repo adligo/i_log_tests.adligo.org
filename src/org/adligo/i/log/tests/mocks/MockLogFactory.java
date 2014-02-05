@@ -1,4 +1,4 @@
-package org.adligo.i.log.mocks;
+package org.adligo.i.log.tests.mocks;
 
 import org.adligo.i.log.client.LogFactory;
 

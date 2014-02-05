@@ -1,4 +1,4 @@
-package org.adligo.i.log;
+package org.adligo.i.log.tests;
 
 import org.adligo.i.log.client.I_LogDelegate;
 

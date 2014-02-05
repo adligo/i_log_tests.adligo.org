@@ -1,4 +1,4 @@
-package org.adligo.i.log;
+package org.adligo.i.log.tests;
 
 import java.io.File;
 import java.net.URL;
@@ -8,9 +8,9 @@ import java.util.List;
 import junit.framework.TestCase;
 
 import org.adligo.i.log.client.LogPlatform;
-import org.adligo.i.log.mocks.MockLogPlatform;
+import org.adligo.i.log.tests.mocks.MockLogPlatform;
 import org.adligo.i.util.client.I_SystemOutput;
-import org.adligo.i.util.mocks.MockPropertyFactory;
+import org.adligo.i.util.tests.mocks.MockPropertyFactory;
 import org.adligo.jse.util.JSEPlatform;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {
@@ -65,6 +65,9 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 		prints.clear();
 		lastExceptionPrint = null;
 		LogPlatform.init("/adligo_log_log4j_factory.properties");
+		
+		//this does in fact try to call out for a class that doesn't exist
+		//
 		assertNotNull(lastExceptionPrint);
 		assertEquals("log_factory is null, because your code needs to call " +
 				"LogPlatform.init(String name, I_LogFactory p) " +

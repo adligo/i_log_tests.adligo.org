@@ -1,4 +1,4 @@
-package org.adligo.i.log;
+package org.adligo.i.log.tests;
 
 import java.util.HashMap;
 
