@@ -12,7 +12,6 @@ import org.adligo.i.util.client.I_Map;
 import org.adligo.i.util.client.I_SystemOutput;
 import org.adligo.i.util.client.MapFactory;
 import org.adligo.i.util.client.SystemOutput;
-import org.adligo.jse.util.JSEPlatform;
 import org.adligo.jse.util.MapWrapper;
 
 public class SimpleLogTests extends TestCase implements I_SystemOutput {
@@ -22,12 +21,7 @@ public class SimpleLogTests extends TestCase implements I_SystemOutput {
 	private Exception x = null;
 	
 	static {
-		try {
-			JSEPlatform.init();
-			LogPlatform.init();
-		} catch (Exception x) {
-			x.printStackTrace();
-		}
+		JUnitNEclipseErrorMessage.init();
 	}
 	
 	public void setUp() {

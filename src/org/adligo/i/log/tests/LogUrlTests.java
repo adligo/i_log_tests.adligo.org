@@ -2,19 +2,12 @@ package org.adligo.i.log.tests;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.models.LogUrl;
-import org.adligo.jse.util.JSEPlatform;
 
 public class LogUrlTests extends TestCase {
 
 	static {
-		try {
-			JSEPlatform.init();
-			LogPlatform.init();
-		} catch (Exception x) {
-			x.printStackTrace();
-		}
+		JUnitNEclipseErrorMessage.init();
 	}
 	 
 	public void testCgi() {

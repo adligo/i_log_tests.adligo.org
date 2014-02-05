@@ -4,15 +4,15 @@ import java.util.HashMap;
 
 import junit.framework.TestCase;
 
+import org.adligo.i.log.client.DefaultLogFactory;
 import org.adligo.i.log.client.DeferredLog;
 import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.client.LogFactoryMemorySnapshot;
 import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.SimpleLog;
 import org.adligo.i.util.client.I_Collection;
 import org.adligo.i.util.client.I_SystemOutput;
-import org.adligo.jse.util.JSEPlatform;
 import org.adligo.jse.util.MapWrapper;
-import org.adligo.tests.ATest;
 
 public class DeferredLogTests extends TestCase implements I_SystemOutput {
 
@@ -23,12 +23,7 @@ public class DeferredLogTests extends TestCase implements I_SystemOutput {
 	LogMockDelegate delegate = new LogMockDelegate();
 	
 	static {
-		try {
-			JSEPlatform.init();
-			LogPlatform.init();
-		} catch (Exception x) {
-			x.printStackTrace();
-		}
+		JUnitNEclipseErrorMessage.init();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -37,6 +32,7 @@ public class DeferredLogTests extends TestCase implements I_SystemOutput {
 		String message = "before the deferred log has " +
 				"a delegate all log level queries should return true!";
 		
+	
 		assertTrue(message, log.isTraceEnabled());
 		assertTrue(message, log.isDebugEnabled());
 		assertTrue(message, log.isInfoEnabled());

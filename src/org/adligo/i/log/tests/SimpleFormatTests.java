@@ -3,21 +3,14 @@ package org.adligo.i.log.tests;
 import junit.framework.TestCase;
 
 import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.client.models.FormatItem;
 import org.adligo.i.log.client.models.StringLogMessage;
 import org.adligo.i.util.client.I_Iterator;
-import org.adligo.jse.util.JSEPlatform;
 
 public class SimpleFormatTests extends TestCase {
 
 	static {
-		try {
-			JSEPlatform.init();
-			LogPlatform.init();
-		} catch (Exception x) {
-			x.printStackTrace();
-		}
+		JUnitNEclipseErrorMessage.init();
 	}
 	
 	public void testSimpleFormat() {

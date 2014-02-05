@@ -1,21 +1,13 @@
 package org.adligo.i.log.tests;
 
-import org.adligo.i.log.client.DefaultLogFactory;
-import org.adligo.i.log.client.LogPlatform;
-import org.adligo.i.log.client.MockDefaultLogFactory;
-import org.adligo.jse.util.JSEPlatform;
-
 import junit.framework.TestCase;
+
+import org.adligo.i.log.client.DefaultLogFactory;
 
 public class DefaultLogFactoryTests extends TestCase {
 
 	static {
-		try {
-			JSEPlatform.init();
-			LogPlatform.init();
-		} catch (Exception x) {
-			x.printStackTrace();
-		}
+		JUnitNEclipseErrorMessage.init();
 	}
 	
 	/**
@@ -27,7 +19,6 @@ public class DefaultLogFactoryTests extends TestCase {
 	 * 
 	 */
 	public void testObtainingLoggers() {
-		MockDefaultLogFactory.uninit();
 		DefaultLogFactory dlf = new DefaultLogFactory();
 		
 		for (int i = 0; i < 20000; i++) {

@@ -7,6 +7,9 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
+import org.adligo.i.log.client.Log;
+import org.adligo.i.log.client.LogFactory;
+import org.adligo.i.log.client.LogFactoryMemorySnapshot;
 import org.adligo.i.log.client.LogPlatform;
 import org.adligo.i.log.tests.mocks.MockLogPlatform;
 import org.adligo.i.util.client.I_SystemOutput;
@@ -19,32 +22,18 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	private boolean log = true;
 	
 	public void testInit() throws Exception {
-		Exception ex = null;
-		try {
-			LogPlatform.init();
-		} catch (Exception x) {
-			ex = x;
-		}
-		assertNotNull(ex);
-		assertEquals("Please initalize your platform BEFORE the LogPlatform, " +
-				"for instance JSEPlatform.init(), GWTPlatform.init(), J2MEPlatform.init. ", 
-				ex.getMessage());
-		
-		JSEPlatform.init();
-		MockLogPlatform.unInit();
-		LogPlatform.init();
+		Exception ex;
+		Log me = LogFactory.getLog(LogPlatformTests.class);
+		me.error("Something happened beforehand!");
+		assertInitalInits();
 		
 		
-		ex = null;
-		try {
-			LogPlatform.init();
-		} catch (Exception x) {
-			ex = x;
-		}
-		assertNotNull(ex);
-		assertEquals("LogPlatform has already been initialized.", 
-				ex.getMessage());
-		
+		assertReInit();
+
+		LogFactoryMemorySnapshot snap = LogPlatform.getDefaultLogFactoryMemorySnapshot();
+		assertEquals(1, snap.getPreInitLoggers().size());
+		assertNotNull(snap.getLoggers());
+		assertFalse(snap.isFirstCallToSetInitalLogLevels());
 		
 		MockLogPlatform.unInit();
 		lastExceptionPrint  = null;
@@ -59,6 +48,27 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 				"system file 'null' using defaults;", prints.get(0));
 		assertEquals("using defaults {gwt_loggers=simple, defaultlog=INFO}", prints.get(1));
 		
+		snap = LogPlatform.getDefaultLogFactoryMemorySnapshot();
+		assertEquals(1, snap.getPreInitLoggers().size());
+		assertNotNull(snap.getLoggers());
+		assertFalse(snap.isFirstCallToSetInitalLogLevels());
+		
+		assertUnknownClass();
+		
+		
+		MockLogPlatform.unInit();
+		
+		snap = LogPlatform.getDefaultLogFactoryMemorySnapshot();
+		assertEquals(1, snap.getPreInitLoggers().size());
+		assertNotNull(snap.getLoggers());
+		assertFalse(snap.isFirstCallToSetInitalLogLevels());
+		
+		LogPlatform.init("adligo_log.properties");
+		
+	}
+
+	private void assertUnknownClass() {
+		String fileName;
 		URL url = LogPlatform.class.getResource("/adligo_log_log4j_factory.properties");
 		fileName = url.getFile();
 		MockLogPlatform.unInit();
@@ -73,6 +83,36 @@ public class LogPlatformTests extends TestCase implements I_SystemOutput {
 				"LogPlatform.init(String name, I_LogFactory p) " +
 				"with a valid instance of your logFactory org.adligo.i.log.log4j.Log4jFactory!", 
 				lastExceptionPrint.getMessage());
+	}
+
+	private void assertReInit() {
+		Exception ex;
+		ex = null;
+		try {
+			LogPlatform.init();
+		} catch (Exception x) {
+			ex = x;
+		}
+		assertNotNull(ex);
+		assertEquals("LogPlatform has already been initialized.", 
+				ex.getMessage());
+	}
+
+	private void assertInitalInits() throws Exception {
+		Exception ex = null;
+		try {
+			LogPlatform.init();
+		} catch (Exception x) {
+			ex = x;
+		}
+		assertNotNull(ex);
+		assertEquals("Please initalize your platform BEFORE the LogPlatform, " +
+				"for instance JSEPlatform.init(), GWTPlatform.init(), J2MEPlatform.init. ", 
+				ex.getMessage());
+		
+		JSEPlatform.init();
+		MockLogPlatform.unInit();
+		LogPlatform.init();
 	}
 
 	@Override

@@ -1,3 +1,9 @@
 Date,Package,Coverage,Instructions
 11/14/2012,org.adligo.i.log.client,70.5%,2777
 11/14/2012,org.adligo.i.log.client.models,61.0%,1087
+#Note this was hand calculated 
+# also these tests require one jvm per test case
+# so they may not all pass in eclipse for emma
+# https://github.com/jacoco/eclemma/issues/76
+2/5/2014,org.adligo.i.log.client,67.6%,2988
+2/5/2014,org.adligo.i.log.client.models,61.0%,1087
