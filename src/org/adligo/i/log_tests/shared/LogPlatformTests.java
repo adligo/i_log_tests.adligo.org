@@ -1,4 +1,4 @@
-package org.adligo.i.log.shared.tests;
+package org.adligo.i.log_tests.shared;
 
 import java.io.File;
 import java.net.URL;
@@ -11,9 +11,9 @@ import org.adligo.i.log.shared.Log;
 import org.adligo.i.log.shared.LogFactory;
 import org.adligo.i.log.shared.LogFactoryMemorySnapshot;
 import org.adligo.i.log.shared.LogPlatform;
-import org.adligo.i.log.shared.tests.mocks.MockLogPlatform;
+import org.adligo.i.log_tests.shared.mocks.MockLogPlatform;
 import org.adligo.i.util.shared.I_SystemOutput;
-import org.adligo.i.util.tests.mocks.MockPropertyFactory;
+import org.adligo.i.util_tests.mocks.MockPropertyFactory;
 import org.adligo.jse.util.JSEPlatform;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {

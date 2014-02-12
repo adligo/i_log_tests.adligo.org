@@ -7,3 +7,5 @@ Date,Package,Coverage,Instructions
 # https://github.com/jacoco/eclemma/issues/76
 2/5/2014,org.adligo.i.log.client,67.6%,2988
 2/5/2014,org.adligo.i.log.client.models,61.0%,1087
+2/11/2014,org.adligo.i.log.shared,67.6%,2988
+2/11/2014,org.adligo.i.log.shared.models,61.0%,1087

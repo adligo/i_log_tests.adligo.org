@@ -1,4 +1,4 @@
-package org.adligo.i.log.shared.tests;
+package org.adligo.i.log_tests.shared;
 
 import junit.framework.TestCase;
 

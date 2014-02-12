@@ -1,4 +1,4 @@
-package org.adligo.i.log.shared.tests.mocks;
+package org.adligo.i.log_tests.shared.mocks;
 
 import org.adligo.i.log.shared.DeferredLog;
 

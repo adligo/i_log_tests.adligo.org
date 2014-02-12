@@ -1,4 +1,4 @@
-package org.adligo.i.log.shared.tests;
+package org.adligo.i.log_tests.shared;
 
 import java.util.HashMap;
 
@@ -446,12 +446,12 @@ public class SimpleLogTests extends TestCase implements I_SystemOutput {
 		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
 		
 		props.put("defaultlog", "WARN");
-		props.put("org.adligo.i.log", "DEBUG");
+		props.put("org.adligo.i.log_tests", "DEBUG");
 		
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
 		
-		props.remove("org.adligo.i.log");
+		props.remove("org.adligo.i.log_tests");
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_WARN, level);
 		
@@ -459,11 +459,11 @@ public class SimpleLogTests extends TestCase implements I_SystemOutput {
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_DEBUG, level);
 		
-		props.put("org.adligo.i.log", "WARN");
+		props.put("org.adligo.i.log_tests", "WARN");
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_WARN, level);
 		
-		props.put("org.adligo.i.log", "TRACE");
+		props.put("org.adligo.i.log_tests", "TRACE");
 		level = SimpleLog.getLogLevel(props, DeferredLogTests.class.getName());
 		assertEquals(DeferredLog.LOG_LEVEL_TRACE, level);
 		
