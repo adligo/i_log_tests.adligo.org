@@ -1,8 +1,8 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
-import org.adligo.i.log.client.SimpleLog;
-import org.adligo.i.util.client.I_Map;
-import org.adligo.i.util.client.I_SystemOutput;
+import org.adligo.i.log.shared.SimpleLog;
+import org.adligo.i.util.shared.I_Map;
+import org.adligo.i.util.shared.I_SystemOutput;
 
 public class MockSimpleLog extends SimpleLog {
 

@@ -1,11 +1,11 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.models.FormatItem;
-import org.adligo.i.log.client.models.StringLogMessage;
-import org.adligo.i.util.client.I_Iterator;
+import org.adligo.i.log.shared.I_LogDelegate;
+import org.adligo.i.log.shared.models.FormatItem;
+import org.adligo.i.log.shared.models.StringLogMessage;
+import org.adligo.i.util.shared.I_Iterator;
 
 public class SimpleFormatTests extends TestCase {
 

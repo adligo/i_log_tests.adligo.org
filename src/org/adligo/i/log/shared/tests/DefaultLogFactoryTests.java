@@ -1,8 +1,8 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.DefaultLogFactory;
+import org.adligo.i.log.shared.DefaultLogFactory;
 
 public class DefaultLogFactoryTests extends TestCase {
 

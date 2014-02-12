@@ -1,6 +1,6 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
-import org.adligo.i.log.client.I_LogDelegate;
+import org.adligo.i.log.shared.I_LogDelegate;
 
 public class LogMockDelegate implements I_LogDelegate {
 

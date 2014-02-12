@@ -1,10 +1,10 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
-import org.adligo.i.util.client.I_Event;
-import org.adligo.i.util.client.I_Factory;
-import org.adligo.i.util.client.I_Listener;
-import org.adligo.i.util.client.ListenerValueObject;
-import org.adligo.i.util.client.PropertyFactory;
+import org.adligo.i.util.shared.I_Event;
+import org.adligo.i.util.shared.I_Factory;
+import org.adligo.i.util.shared.I_Listener;
+import org.adligo.i.util.shared.ListenerValueObject;
+import org.adligo.i.util.shared.PropertyFactory;
 
 /**
  * this class simulates a remote call to obtain 

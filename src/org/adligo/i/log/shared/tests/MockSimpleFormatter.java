@@ -1,7 +1,7 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
-import org.adligo.i.log.client.SimpleFormatter;
-import org.adligo.i.util.client.I_Iterator;
+import org.adligo.i.log.shared.SimpleFormatter;
+import org.adligo.i.util.shared.I_Iterator;
 
 public class MockSimpleFormatter extends SimpleFormatter {
 

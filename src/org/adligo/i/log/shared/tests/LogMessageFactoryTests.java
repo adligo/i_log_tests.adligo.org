@@ -1,11 +1,11 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.models.LogMessage;
-import org.adligo.i.log.client.models.LogMessageFactory;
-import org.adligo.i.log.client.models.ObjectLogMessage;
-import org.adligo.i.log.client.models.StringLogMessage;
+import org.adligo.i.log.shared.models.LogMessage;
+import org.adligo.i.log.shared.models.LogMessageFactory;
+import org.adligo.i.log.shared.models.ObjectLogMessage;
+import org.adligo.i.log.shared.models.StringLogMessage;
 
 public class LogMessageFactoryTests extends TestCase {
 

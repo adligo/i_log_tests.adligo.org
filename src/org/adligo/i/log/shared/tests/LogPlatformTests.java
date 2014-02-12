@@ -1,4 +1,4 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import java.io.File;
 import java.net.URL;
@@ -7,12 +7,12 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.Log;
-import org.adligo.i.log.client.LogFactory;
-import org.adligo.i.log.client.LogFactoryMemorySnapshot;
-import org.adligo.i.log.client.LogPlatform;
-import org.adligo.i.log.tests.mocks.MockLogPlatform;
-import org.adligo.i.util.client.I_SystemOutput;
+import org.adligo.i.log.shared.Log;
+import org.adligo.i.log.shared.LogFactory;
+import org.adligo.i.log.shared.LogFactoryMemorySnapshot;
+import org.adligo.i.log.shared.LogPlatform;
+import org.adligo.i.log.shared.tests.mocks.MockLogPlatform;
+import org.adligo.i.util.shared.I_SystemOutput;
 import org.adligo.i.util.tests.mocks.MockPropertyFactory;
 import org.adligo.jse.util.JSEPlatform;
 

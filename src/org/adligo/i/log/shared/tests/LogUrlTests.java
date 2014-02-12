@@ -1,8 +1,8 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.models.LogUrl;
+import org.adligo.i.log.shared.models.LogUrl;
 
 public class LogUrlTests extends TestCase {
 

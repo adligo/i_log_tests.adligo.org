@@ -1,6 +1,6 @@
-package org.adligo.i.log.tests.mocks;
+package org.adligo.i.log.shared.tests.mocks;
 
-import org.adligo.i.log.client.DeferredLog;
+import org.adligo.i.log.shared.DeferredLog;
 
 public class MockDeferredLog extends DeferredLog {
 

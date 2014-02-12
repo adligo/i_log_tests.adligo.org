@@ -1,6 +1,6 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
-import org.adligo.i.log.client.LogPlatform;
+import org.adligo.i.log.shared.LogPlatform;
 import org.adligo.jse.util.JSEPlatform;
 
 public class JUnitNEclipseErrorMessage {

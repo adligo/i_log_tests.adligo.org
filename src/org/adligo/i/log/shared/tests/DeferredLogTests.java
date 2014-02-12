@@ -1,17 +1,17 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import java.util.HashMap;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.DefaultLogFactory;
-import org.adligo.i.log.client.DeferredLog;
-import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.LogFactoryMemorySnapshot;
-import org.adligo.i.log.client.LogPlatform;
-import org.adligo.i.log.client.SimpleLog;
-import org.adligo.i.util.client.I_Collection;
-import org.adligo.i.util.client.I_SystemOutput;
+import org.adligo.i.log.shared.DefaultLogFactory;
+import org.adligo.i.log.shared.DeferredLog;
+import org.adligo.i.log.shared.I_LogDelegate;
+import org.adligo.i.log.shared.LogFactoryMemorySnapshot;
+import org.adligo.i.log.shared.LogPlatform;
+import org.adligo.i.log.shared.SimpleLog;
+import org.adligo.i.util.shared.I_Collection;
+import org.adligo.i.util.shared.I_SystemOutput;
 import org.adligo.jse.util.MapWrapper;
 
 public class DeferredLogTests extends TestCase implements I_SystemOutput {

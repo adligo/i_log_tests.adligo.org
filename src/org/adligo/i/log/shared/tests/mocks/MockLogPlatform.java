@@ -1,8 +1,8 @@
-package org.adligo.i.log.tests.mocks;
+package org.adligo.i.log.shared.tests.mocks;
 
-import org.adligo.i.log.client.LogPlatform;
-import org.adligo.i.util.client.HashCollection;
-import org.adligo.i.util.client.I_SystemOutput;
+import org.adligo.i.log.shared.LogPlatform;
+import org.adligo.i.util.shared.HashCollection;
+import org.adligo.i.util.shared.I_SystemOutput;
 
 public class MockLogPlatform extends LogPlatform {
 

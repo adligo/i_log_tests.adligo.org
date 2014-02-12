@@ -1,12 +1,12 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import java.util.HashMap;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.I_LogDelegate;
-import org.adligo.i.log.client.ProxyLog;
-import org.adligo.i.util.client.I_Map;
+import org.adligo.i.log.shared.I_LogDelegate;
+import org.adligo.i.log.shared.ProxyLog;
+import org.adligo.i.util.shared.I_Map;
 import org.adligo.jse.util.JSEPlatform;
 import org.adligo.jse.util.MapWrapper;
 import org.adligo.tests.ATest;

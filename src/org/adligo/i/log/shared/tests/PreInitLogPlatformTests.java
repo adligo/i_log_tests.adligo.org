@@ -1,14 +1,14 @@
-package org.adligo.i.log.tests;
+package org.adligo.i.log.shared.tests;
 
 import junit.framework.TestCase;
 
-import org.adligo.i.log.client.Log;
-import org.adligo.i.log.client.LogFactory;
-import org.adligo.i.log.client.LogFactoryMemorySnapshot;
-import org.adligo.i.log.client.LogPlatform;
-import org.adligo.i.util.client.Event;
-import org.adligo.i.util.client.I_Map;
-import org.adligo.i.util.client.MapFactory;
+import org.adligo.i.log.shared.Log;
+import org.adligo.i.log.shared.LogFactory;
+import org.adligo.i.log.shared.LogFactoryMemorySnapshot;
+import org.adligo.i.log.shared.LogPlatform;
+import org.adligo.i.util.shared.Event;
+import org.adligo.i.util.shared.I_Map;
+import org.adligo.i.util.shared.MapFactory;
 import org.adligo.jse.util.JSEPlatform;
 
 public class PreInitLogPlatformTests extends TestCase {
