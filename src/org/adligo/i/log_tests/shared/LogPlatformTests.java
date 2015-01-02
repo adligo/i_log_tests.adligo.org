@@ -1,10 +1,5 @@
 package org.adligo.i.log_tests.shared;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 import junit.framework.TestCase;
 
 import org.adligo.i.log.shared.Log;
@@ -13,8 +8,13 @@ import org.adligo.i.log.shared.LogFactoryMemorySnapshot;
 import org.adligo.i.log.shared.LogPlatform;
 import org.adligo.i.log_tests.shared.mocks.MockLogPlatform;
 import org.adligo.i.util.shared.I_SystemOutput;
-import org.adligo.i.util_tests.mocks.MockPropertyFactory;
+import org.adligo.i.util_tests.shared.mocks.MockPropertyFactory;
 import org.adligo.jse.util.JSEPlatform;
+
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogPlatformTests extends TestCase implements I_SystemOutput {
 	private Throwable lastExceptionPrint = null;
