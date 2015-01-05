@@ -1,8 +1,8 @@
-bin/
+/bin/
 /build/
-classes/
-classes_e/
+/classes/
+/classes_e/
 i_log_tests.jar
 test_failure.properties
-test_reports/
+/test_reports/
 
