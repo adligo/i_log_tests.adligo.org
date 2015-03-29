@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="src_runtime"/>
+	<classpathentry kind="output" path="classes_e"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/i_log.adligo.org"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/i_util.adligo.org"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/tests.adligo.org"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/i_util_tests.adligo.org"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jse_util.adligo.org"/>
-	<classpathentry kind="var" path="MVN_REPO/com/google/gwt/gwt-user/2.5.0/gwt-user-2.5.0.jar"/>
-	<classpathentry kind="var" path="MVN_REPO/com/google/gwt/gwt-dev/2.5.0/gwt-dev-2.5.0.jar"/>
-	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/tests.adligo.org"/>
 </classpath>
