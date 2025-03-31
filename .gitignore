@@ -1,2 +1,14 @@
+<<<<<<< HEAD
 /bin/
 /.classpath
+=======
+.classpath
+/bin/
+/build/
+/classes/
+/classes_e/
+i_log_tests.jar
+test_failure.properties
+/test_reports/
+
+>>>>>>> 7e250f5f4f49615c70302ea156a59f60a0ff3b71
